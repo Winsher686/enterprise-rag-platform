@@ -1,0 +1,79 @@
+<svg viewBox="0 0 680 640" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>离线知识构建流程图</title>
+<desc>从管理员上传文档到写入 Milvus 的异步处理流程</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<text x="40" y="34" font-family="sans-serif" font-size="15" font-weight="500" fill="#26215C">离线知识构建链路（文档 → 可检索知识）</text>
+
+<g>
+<rect x="240" y="52" width="200" height="44" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="340" y="74" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C" text-anchor="middle" dominant-baseline="central">管理员上传文档</text>
+</g>
+
+<g>
+<rect x="240" y="120" width="200" height="44" rx="8" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text x="340" y="142" font-family="sans-serif" font-size="13" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central">文件格式 / 大小 / 权限校验</text>
+</g>
+
+<line x1="340" y1="96" x2="340" y2="120" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="188" width="200" height="44" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="340" y="210" font-family="sans-serif" font-size="13" fill="#04342C" text-anchor="middle" dominant-baseline="central">保存原始文件 + 创建文档记录</text>
+</g>
+
+<line x1="340" y1="164" x2="340" y2="188" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="256" width="200" height="44" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="340" y="278" font-family="sans-serif" font-size="13" font-weight="500" fill="#3C3489" text-anchor="middle" dominant-baseline="central">创建异步任务 → 返回 task_id</text>
+</g>
+
+<line x1="340" y1="232" x2="340" y2="256" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="324" width="200" height="44" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="340" y="346" font-family="sans-serif" font-size="13" fill="#412402" text-anchor="middle" dominant-baseline="central">Celery Worker 文档解析</text>
+</g>
+
+<line x1="340" y1="300" x2="340" y2="324" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="392" width="200" height="44" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="340" y="414" font-family="sans-serif" font-size="13" fill="#412402" text-anchor="middle" dominant-baseline="central">文本清洗 + 文档切片 Chunking</text>
+</g>
+
+<line x1="340" y1="368" x2="340" y2="392" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="460" width="200" height="44" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="340" y="482" font-family="sans-serif" font-size="13" fill="#412402" text-anchor="middle" dominant-baseline="central">BGE-M3 生成 Embedding</text>
+</g>
+
+<line x1="340" y1="436" x2="340" y2="460" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="120" y="528" width="200" height="44" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="220" y="550" font-family="sans-serif" font-size="13" fill="#173404" text-anchor="middle" dominant-baseline="central">写入 Milvus</text>
+</g>
+
+<g>
+<rect x="360" y="528" width="200" height="44" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="460" y="550" font-family="sans-serif" font-size="13" fill="#173404" text-anchor="middle" dominant-baseline="central">保存 Chunk 元数据 PostgreSQL</text>
+</g>
+
+<line x1="340" y1="504" x2="220" y2="528" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="340" y1="504" x2="460" y2="528" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="240" y="596" width="200" height="44" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="340" y="618" font-family="sans-serif" font-size="13" font-weight="500" fill="#791F1F" text-anchor="middle" dominant-baseline="central">校验索引结果 → 更新状态</text>
+</g>
+
+<line x1="220" y1="572" x2="320" y2="596" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="460" y1="572" x2="360" y2="596" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>

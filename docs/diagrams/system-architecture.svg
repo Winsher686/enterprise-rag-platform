@@ -1,0 +1,120 @@
+<svg viewBox="0 0 680 720" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>企业知识库系统总体架构图</title>
+<desc>从接入层到数据层的分层架构，展示认证、业务、任务、检索、模型、数据与可观测层</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<text x="40" y="34" font-family="sans-serif" font-size="15" font-weight="500" fill="#26215C">企业知识库与智能业务服务平台 · 系统总体架构</text>
+
+<g>
+<rect x="40" y="52" width="600" height="46" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="340" y="75" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C" text-anchor="middle" dominant-baseline="central">接入层 · FastAPI API Gateway</text>
+</g>
+
+<g>
+<rect x="40" y="112" width="600" height="46" rx="10" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="340" y="135" font-family="sans-serif" font-size="13" font-weight="500" fill="#3C3489" text-anchor="middle" dominant-baseline="central">认证层 · JWT + RBAC 权限校验</text>
+</g>
+
+<line x1="340" y1="98" x2="340" y2="112" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="40" y="172" width="600" height="118" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text x="52" y="192" font-family="sans-serif" font-size="12" font-weight="500" fill="#444441">业务层</text>
+<g>
+<rect x="56" y="204" width="136" height="70" rx="8" fill="#FFFFFF" stroke="#888780" stroke-width="0.5"/>
+<text x="124" y="230" font-family="sans-serif" font-size="12" font-weight="500" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central">知识库管理</text>
+<text x="124" y="248" font-family="sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">Knowledge Service</text>
+</g>
+<g>
+<rect x="204" y="204" width="136" height="70" rx="8" fill="#FFFFFF" stroke="#888780" stroke-width="0.5"/>
+<text x="272" y="230" font-family="sans-serif" font-size="12" font-weight="500" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central">文档管理</text>
+<text x="272" y="248" font-family="sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">Document Service</text>
+</g>
+<g>
+<rect x="352" y="204" width="136" height="70" rx="8" fill="#FFFFFF" stroke="#888780" stroke-width="0.5"/>
+<text x="420" y="230" font-family="sans-serif" font-size="12" font-weight="500" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central">问答服务</text>
+<text x="420" y="248" font-family="sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">QA Service</text>
+</g>
+<g>
+<rect x="500" y="204" width="124" height="70" rx="8" fill="#FFFFFF" stroke="#888780" stroke-width="0.5"/>
+<text x="562" y="226" font-family="sans-serif" font-size="12" font-weight="500" fill="#2C2C2A" text-anchor="middle" dominant-baseline="central">异步任务调度</text>
+<text x="562" y="248" font-family="sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle" dominant-baseline="central">Celery Worker</text>
+</g>
+</g>
+
+<line x1="340" y1="158" x2="340" y2="172" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<g>
+<rect x="40" y="304" width="600" height="110" rx="12" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="52" y="324" font-family="sans-serif" font-size="12" font-weight="500" fill="#085041">检索层</text>
+<g>
+<rect x="56" y="336" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="146" y="358" font-family="sans-serif" font-size="12" font-weight="500" fill="#04342C" text-anchor="middle" dominant-baseline="central">BM25 关键词检索</text>
+<text x="146" y="378" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">Elasticsearch 可选</text>
+</g>
+<g>
+<rect x="248" y="336" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="338" y="358" font-family="sans-serif" font-size="12" font-weight="500" fill="#04342C" text-anchor="middle" dominant-baseline="central">Milvus 向量检索</text>
+<text x="338" y="378" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">Dense Retrieval</text>
+</g>
+<g>
+<rect x="440" y="336" width="184" height="64" rx="8" fill="#FFFFFF" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="532" y="358" font-family="sans-serif" font-size="12" font-weight="500" fill="#04342C" text-anchor="middle" dominant-baseline="central">Reranker 重排序</text>
+<text x="532" y="378" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">BGE Reranker</text>
+</g>
+</g>
+
+<g>
+<rect x="40" y="428" width="600" height="110" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="52" y="448" font-family="sans-serif" font-size="12" font-weight="500" fill="#633806">模型层</text>
+<g>
+<rect x="56" y="460" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#854F0B" stroke-width="0.5"/>
+<text x="146" y="482" font-family="sans-serif" font-size="12" font-weight="500" fill="#412402" text-anchor="middle" dominant-baseline="central">BGE-M3</text>
+<text x="146" y="502" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">Embedding 向量化</text>
+</g>
+<g>
+<rect x="248" y="460" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#854F0B" stroke-width="0.5"/>
+<text x="338" y="482" font-family="sans-serif" font-size="12" font-weight="500" fill="#412402" text-anchor="middle" dominant-baseline="central">Qwen / DeepSeek</text>
+<text x="338" y="502" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">LLM 答案生成</text>
+</g>
+<g>
+<rect x="440" y="460" width="184" height="64" rx="8" fill="#FFFFFF" stroke="#854F0B" stroke-width="0.5"/>
+<text x="532" y="482" font-family="sans-serif" font-size="12" font-weight="500" fill="#412402" text-anchor="middle" dominant-baseline="central">BGE Reranker</text>
+<text x="532" y="502" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">相关性精排</text>
+</g>
+</g>
+
+<g>
+<rect x="40" y="552" width="600" height="110" rx="12" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="52" y="572" font-family="sans-serif" font-size="12" font-weight="500" fill="#27500A">数据层</text>
+<g>
+<rect x="56" y="584" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="146" y="606" font-family="sans-serif" font-size="12" font-weight="500" fill="#173404" text-anchor="middle" dominant-baseline="central">PostgreSQL</text>
+<text x="146" y="626" font-family="sans-serif" font-size="11" fill="#3B6D11" text-anchor="middle" dominant-baseline="central">业务元数据</text>
+</g>
+<g>
+<rect x="248" y="584" width="180" height="64" rx="8" fill="#FFFFFF" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="338" y="606" font-family="sans-serif" font-size="12" font-weight="500" fill="#173404" text-anchor="middle" dominant-baseline="central">Milvus</text>
+<text x="338" y="626" font-family="sans-serif" font-size="11" fill="#3B6D11" text-anchor="middle" dominant-baseline="central">向量数据</text>
+</g>
+<g>
+<rect x="440" y="584" width="184" height="64" rx="8" fill="#FFFFFF" stroke="#3B6D11" stroke-width="0.5"/>
+<text x="532" y="606" font-family="sans-serif" font-size="12" font-weight="500" fill="#173404" text-anchor="middle" dominant-baseline="central">Redis</text>
+<text x="532" y="626" font-family="sans-serif" font-size="11" fill="#3B6D11" text-anchor="middle" dominant-baseline="central">缓存 / 任务队列</text>
+</g>
+</g>
+
+<g>
+<rect x="40" y="676" width="600" height="46" rx="10" fill="#FAECE7" stroke="#993C1D" stroke-width="0.5"/>
+<text x="340" y="699" font-family="sans-serif" font-size="13" font-weight="500" fill="#712B13" text-anchor="middle" dominant-baseline="central">可观测层 · LangFuse 追踪 + Python Logging</text>
+</g>
+
+<line x1="340" y1="290" x2="340" y2="304" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="340" y1="414" x2="340" y2="428" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="340" y1="538" x2="340" y2="552" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="340" y1="662" x2="340" y2="676" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>

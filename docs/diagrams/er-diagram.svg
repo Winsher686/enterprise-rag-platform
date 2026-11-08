@@ -1,0 +1,123 @@
+<svg viewBox="0 0 680 760" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>核心数据实体关系图</title>
+<desc>企业知识库系统 12 个核心实体及其关系</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<text x="40" y="32" font-family="sans-serif" font-size="15" font-weight="500" fill="#26215C">核心数据实体关系图（ER Diagram）</text>
+
+<g>
+<rect x="40" y="52" width="150" height="54" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="115" y="72" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C" text-anchor="middle" dominant-baseline="central">DEPARTMENT 部门</text>
+<text x="115" y="90" font-family="sans-serif" font-size="11" fill="#185FA5" text-anchor="middle" dominant-baseline="central">id · name</text>
+</g>
+
+<g>
+<rect x="40" y="140" width="150" height="54" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="115" y="160" font-family="sans-serif" font-size="13" font-weight="500" fill="#0C447C" text-anchor="middle" dominant-baseline="central">USER 用户</text>
+<text x="115" y="178" font-family="sans-serif" font-size="11" fill="#185FA5" text-anchor="middle" dominant-baseline="central">id · username · dept_id</text>
+</g>
+
+<g>
+<rect x="490" y="140" width="150" height="54" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="565" y="160" font-family="sans-serif" font-size="13" font-weight="500" fill="#3C3489" text-anchor="middle" dominant-baseline="central">ROLE 角色</text>
+<text x="565" y="178" font-family="sans-serif" font-size="11" fill="#534AB7" text-anchor="middle" dominant-baseline="central">id · name</text>
+</g>
+
+<g>
+<rect x="265" y="140" width="150" height="54" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.5"/>
+<text x="340" y="160" font-family="sans-serif" font-size="13" font-weight="500" fill="#3C3489" text-anchor="middle" dominant-baseline="central">USER_ROLE 用户角色</text>
+<text x="340" y="178" font-family="sans-serif" font-size="11" fill="#534AB7" text-anchor="middle" dominant-baseline="central">user_id · role_id</text>
+</g>
+
+<g>
+<rect x="40" y="240" width="150" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="115" y="260" font-family="sans-serif" font-size="13" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">KNOWLEDGE_BASE</text>
+<text x="115" y="278" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">id · name · owner_id</text>
+</g>
+
+<g>
+<rect x="265" y="240" width="150" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="340" y="260" font-family="sans-serif" font-size="13" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">KB_PERMISSION</text>
+<text x="340" y="278" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">user_id · kb_id · perm</text>
+</g>
+
+<g>
+<rect x="490" y="240" width="150" height="54" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="565" y="260" font-family="sans-serif" font-size="13" font-weight="500" fill="#085041" text-anchor="middle" dominant-baseline="central">DOCUMENT 文档</text>
+<text x="565" y="278" font-family="sans-serif" font-size="11" fill="#0F6E56" text-anchor="middle" dominant-baseline="central">id · kb_id · name · status</text>
+</g>
+
+<g>
+<rect x="40" y="340" width="150" height="54" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="115" y="360" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806" text-anchor="middle" dominant-baseline="central">DOCUMENT_VERSION</text>
+<text x="115" y="378" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">id · doc_id · version</text>
+</g>
+
+<g>
+<rect x="265" y="340" width="150" height="54" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="340" y="360" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806" text-anchor="middle" dominant-baseline="central">CHUNK 切片</text>
+<text x="340" y="378" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">id · doc_id · version</text>
+</g>
+
+<g>
+<rect x="490" y="340" width="150" height="54" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="565" y="360" font-family="sans-serif" font-size="13" font-weight="500" fill="#633806" text-anchor="middle" dominant-baseline="central">PROCESSING_TASK</text>
+<text x="565" y="378" font-family="sans-serif" font-size="11" fill="#854F0B" text-anchor="middle" dominant-baseline="central">id · doc_id · status</text>
+</g>
+
+<g>
+<rect x="40" y="440" width="150" height="54" rx="8" fill="#FBEAF0" stroke="#993556" stroke-width="0.5"/>
+<text x="115" y="460" font-family="sans-serif" font-size="13" font-weight="500" fill="#72243E" text-anchor="middle" dominant-baseline="central">CONVERSATION 对话</text>
+<text x="115" y="478" font-family="sans-serif" font-size="11" fill="#993556" text-anchor="middle" dominant-baseline="central">id · user_id · title</text>
+</g>
+
+<g>
+<rect x="265" y="440" width="150" height="54" rx="8" fill="#FBEAF0" stroke="#993556" stroke-width="0.5"/>
+<text x="340" y="460" font-family="sans-serif" font-size="13" font-weight="500" fill="#72243E" text-anchor="middle" dominant-baseline="central">MESSAGE 消息</text>
+<text x="340" y="478" font-family="sans-serif" font-size="11" fill="#993556" text-anchor="middle" dominant-baseline="central">id · conv_id · role · content</text>
+</g>
+
+<line x1="115" y1="106" x2="115" y2="140" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="130" y="126" font-family="sans-serif" font-size="11" fill="#5F5E5A">contains 1:N</text>
+
+<line x1="190" y1="167" x2="265" y2="167" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="228" y="158" font-family="sans-serif" font-size="11" fill="#5F5E5A">has</text>
+
+<line x1="415" y1="167" x2="490" y2="167" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="452" y="158" font-family="sans-serif" font-size="11" fill="#5F5E5A">assigned</text>
+
+<line x1="115" y1="194" x2="115" y2="240" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="130" y="220" font-family="sans-serif" font-size="11" fill="#5F5E5A">creates</text>
+
+<line x1="190" y1="267" x2="265" y2="267" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="228" y="258" font-family="sans-serif" font-size="11" fill="#5F5E5A">grants</text>
+
+<line x1="415" y1="267" x2="490" y2="267" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="452" y="258" font-family="sans-serif" font-size="11" fill="#5F5E5A">contains</text>
+
+<line x1="565" y1="294" x2="565" y2="340" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="580" y="320" font-family="sans-serif" font-size="11" fill="#5F5E5A">has</text>
+
+<line x1="190" y1="367" x2="265" y2="367" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="228" y="358" font-family="sans-serif" font-size="11" fill="#5F5E5A">produces</text>
+
+<line x1="415" y1="367" x2="490" y2="367" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="452" y="358" font-family="sans-serif" font-size="11" fill="#5F5E5A">processes</text>
+
+<line x1="190" y1="467" x2="265" y2="467" stroke="#888780" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="228" y="458" font-family="sans-serif" font-size="11" fill="#5F5E5A">contains</text>
+
+<text x="115" y="590" font-family="sans-serif" font-size="11" fill="#5F5E5A" text-anchor="middle">owns (User → Conversation)</text>
+
+<g>
+<rect x="40" y="620" width="600" height="120" rx="12" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+<text x="52" y="642" font-family="sans-serif" font-size="12" font-weight="500" fill="#444441">版本与切片关系示例</text>
+<text x="56" y="668" font-family="sans-serif" font-size="12" fill="#2C2C2A">差旅费用管理办法.docx</text>
+<text x="76" y="692" font-family="sans-serif" font-size="11" fill="#5F5E5A">├─ Version 1 → Chunk 1、Chunk 2</text>
+<text x="76" y="714" font-family="sans-serif" font-size="11" fill="#5F5E5A">└─ Version 2 → Chunk 1、Chunk 2、Chunk 3</text>
+</g>
+</svg>

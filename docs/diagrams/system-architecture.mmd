@@ -1,0 +1,57 @@
+flowchart TB
+    subgraph ACCESS["接入层"]
+        GW["FastAPI API Gateway"]
+    end
+
+    subgraph AUTH["认证层"]
+        JWT["JWT / RBAC 权限校验"]
+    end
+
+    subgraph BIZ["业务层"]
+        KB["知识库管理模块"]
+        DOC["文档管理模块"]
+        QA["问答服务模块"]
+        CELERY["异步任务调度 Celery Worker"]
+    end
+
+    subgraph RETRIEVAL["检索层"]
+        BM25["BM25 / Elasticsearch(可选)"]
+        MILVUS_R["Milvus 向量检索"]
+        RR["Reranker 重排序"]
+    end
+
+    subgraph MODEL["模型层"]
+        EMB["BGE-M3 Embedding"]
+        LLM["Qwen / DeepSeek LLM"]
+        RERANK["BGE Reranker"]
+    end
+
+    subgraph DATA["数据层"]
+        PG["PostgreSQL 业务元数据"]
+        MILVUS_D["Milvus 向量数据"]
+        REDIS["Redis 缓存 / 队列"]
+    end
+
+    subgraph OBS["可观测层"]
+        LANGFUSE["LangFuse 追踪"]
+        LOG["Python Logging"]
+    end
+
+    GW --> JWT --> KB
+    GW --> DOC
+    GW --> QA
+    DOC --> CELERY
+    CELERY --> EMB
+    CELERY --> MILVUS_D
+    QA --> BM25 --> RR
+    QA --> MILVUS_R --> RR
+    RR --> LLM
+    EMB --> MILVUS_D
+    KB --> PG
+    DOC --> PG
+    QA --> REDIS
+    CELERY --> REDIS
+    QA --> PG
+    MILVUS_R --> MILVUS_D
+    QA -.追踪.-> LANGFUSE
+    CELERY -.追踪.-> LANGFUSE

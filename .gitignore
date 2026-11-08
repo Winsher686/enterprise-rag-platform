@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 环境变量与密钥（绝不能提交）
+.env
+.env.local
+*.env
+
+# 日志
+*.log
+logs/
+
+# 测试与覆盖率
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# 上传的原始文件与临时文件
+backend/uploads/
+backend/tmp/
+backend/storage/
+
+# 数据卷
+docker/volumes/
+milvus_data/
+postgres_data/
+redis_data/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# 类型检查
+.mypy_cache/
+.ruff_cache/

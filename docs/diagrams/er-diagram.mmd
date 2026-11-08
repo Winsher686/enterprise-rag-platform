@@ -1,0 +1,74 @@
+erDiagram
+    DEPARTMENT ||--o{ USER : contains
+    USER ||--o{ USER_ROLE : has
+    ROLE ||--o{ USER_ROLE : assigned
+    USER ||--o{ KNOWLEDGE_BASE : creates
+    KNOWLEDGE_BASE ||--o{ KB_PERMISSION : grants
+    USER ||--o{ KB_PERMISSION : receives
+    KNOWLEDGE_BASE ||--o{ DOCUMENT : contains
+    DOCUMENT ||--o{ DOCUMENT_VERSION : has
+    DOCUMENT_VERSION ||--o{ CHUNK : produces
+    DOCUMENT ||--o{ PROCESSING_TASK : processes
+    USER ||--o{ CONVERSATION : owns
+    CONVERSATION ||--o{ MESSAGE : contains
+
+    USER {
+        int id PK
+        string username
+        int department_id FK
+    }
+    DEPARTMENT {
+        int id PK
+        string name
+    }
+    ROLE {
+        int id PK
+        string name
+    }
+    USER_ROLE {
+        int user_id FK
+        int role_id FK
+    }
+    KNOWLEDGE_BASE {
+        int id PK
+        string name
+        int owner_id FK
+    }
+    KB_PERMISSION {
+        int user_id FK
+        int kb_id FK
+        string permission
+    }
+    DOCUMENT {
+        int id PK
+        int kb_id FK
+        string name
+        string status
+    }
+    DOCUMENT_VERSION {
+        int id PK
+        int document_id FK
+        int version
+    }
+    CHUNK {
+        int id PK
+        int document_id FK
+        int version
+        string content
+    }
+    PROCESSING_TASK {
+        int id PK
+        int document_id FK
+        string status
+    }
+    CONVERSATION {
+        int id PK
+        int user_id FK
+        string title
+    }
+    MESSAGE {
+        int id PK
+        int conversation_id FK
+        string role
+        string content
+    }
